@@ -15,18 +15,18 @@ class CreateScrapersTable extends Migration
     {
         Schema::create('scrapers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('pi_folio');
-            $table->text('pi_property_address');
-            $table->text('pi_owner');
-            $table->text('pi_mail_address');
-            $table->text('pi_primary_zone');
-            $table->text('pi_primary_land_use');
-            $table->text('pi_bed_bath_half');
-            $table->text('pi_living_area');
-            $table->text('pi_year_built');
-            $table->text('assessment_info');
-            $table->text('full_legal_description');
-            $table->text('sales_info');
+            $table->text('pi_folio')->nullable();
+            $table->text('pi_property_address')->nullable();
+            $table->text('pi_owner')->nullable();
+            $table->text('pi_mail_address')->nullable();
+            $table->text('pi_primary_zone')->nullable();
+            $table->text('pi_primary_land_use')->nullable();
+            $table->text('pi_bed_bath_half')->nullable();
+            $table->text('pi_living_area')->nullable();
+            $table->text('pi_year_built')->nullable();
+            $table->text('assessment_info')->nullable();
+            $table->text('full_legal_description')->nullable();
+            $table->text('sales_info')->nullable();
             $table->timestamps();
         });
     }
