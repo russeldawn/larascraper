@@ -31,8 +31,8 @@ class ScrapersImport implements ToCollection
     // }
     public function collection(Collection $rows)
     {
-        // foreach ($rows as $row) {
-        //     $parsed_row = \str_replace('-', '', $row[0]);
+        foreach ($rows as $row) {
+            $parsed_row = \str_replace('-', '', $row[0]);
 
             // initialize variables
             $client = new Client();
@@ -40,7 +40,7 @@ class ScrapersImport implements ToCollection
             $data = null;
 
             // intialize https request
-            $request = new Request('GET', 'https://www8.miamidade.gov/Apps/PA/PApublicServiceProxy/PaServicesProxy.ashx?Operation=GetPropertySearchByFolio&clientAppName=PropertySearch&folioNumber=0242032511820' );
+            $request = new Request('GET', 'https://www8.miamidade.gov/Apps/PA/PApublicServiceProxy/PaServicesProxy.ashx?Operation=GetPropertySearchByFolio&clientAppName=PropertySearch&folioNumber=' . $parsed_row );
 
             // send https request
             $promise = $client->sendAsync($request)->then(function ($response) {
@@ -128,9 +128,11 @@ class ScrapersImport implements ToCollection
                     'full_legal_description' => $full_legal_desc,
                     'sales_info'            => $sales_info
                 ]);
+            } else {
+                dd('You got Disconnected! Your last Folio Number was' . $parsed_row);
             }
 
 
-        // }
+        }
     }
 }
